@@ -1,16 +1,100 @@
-import { useState } from 'react'
+import { caNhan, ungDung } from './thongtin.js'
+
+function TheUngDung({ app }) {
+  const ngoai = app.link.startsWith('http')
+  return (
+    <a className="app" href={app.link} {...(ngoai ? { target: '_blank', rel: 'noopener' } : {})}>
+      <div className="app-dau">
+        <span className="app-icon" aria-hidden="true">
+          <img src="/brand/agribank_bieu_tuong.svg" alt="" />
+        </span>
+        {app.nhan && <span className="app-nhan">{app.nhan}</span>}
+      </div>
+      <h3>{app.ten}</h3>
+      <p>{app.moTa}</p>
+      <span className="app-mo">Mở ứng dụng <span aria-hidden="true">→</span></span>
+    </a>
+  )
+}
 
 export default function App() {
-  const [count, setCount] = useState(0)
   return (
-    <main className="card">
-      <p className="tag">React + Vite · GitHub · Vercel</p>
-      <h1>Website đầu tiên của Thông</h1>
-      <p>Trang này được đưa lên mạng miễn phí bằng GitHub và Vercel.</p>
-      <button onClick={() => setCount((c) => c + 1)}>
-        Đã bấm {count} lần
-      </button>
-      <p className="hint">Sửa file <code>src/App.jsx</code>, rồi <code>git push</code> để cập nhật trang.</p>
-    </main>
+    <>
+      <header className="dau-trang">
+        <div className="khung dau-trang-trong">
+          <a href="#" className="logo-khoi" aria-label="Trang chủ">
+            <img src="/brand/agribank_logo_chuan.svg" alt="Agribank" className="logo" />
+            <span className="ten-chi-nhanh">CHI NHÁNH TÂY NINH</span>
+          </a>
+          <nav className="menu">
+            <a href="#gioi-thieu">Giới thiệu</a>
+            <a href="#ung-dung">Ứng dụng</a>
+            <a href="#lien-he">Liên hệ</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section className="hero" id="gioi-thieu">
+          <div className="khung hero-trong">
+            <div className="hero-chu">
+              <p className="hero-nho">{caNhan.chiNhanh}</p>
+              <h1>
+                Xin chào, mình là <span className="ten">{caNhan.ten}</span>
+              </h1>
+              <p className="chuc-danh">{caNhan.chucDanh}</p>
+              <p className="gioi-thieu">{caNhan.gioiThieu}</p>
+              <div className="nut-nhom">
+                <a className="nut nut-vang" href="#ung-dung">Xem ứng dụng</a>
+                <a className="nut nut-vien" href="#lien-he">Liên hệ</a>
+              </div>
+            </div>
+            <figure className="hero-anh">
+              <img src="/images/tru-so-agribank-tay-ninh.jpg" alt="Trụ sở Agribank Chi nhánh Tây Ninh" />
+              <figcaption>Trụ sở Agribank Chi nhánh Tây Ninh</figcaption>
+            </figure>
+          </div>
+          <div className="duong-luon" aria-hidden="true" />
+        </section>
+
+        <section className="phan" id="ung-dung">
+          <div className="khung">
+            <p className="phan-nho">Ứng dụng</p>
+            <h2>Công cụ & ứng dụng</h2>
+            <p className="phan-mo-ta">Các ứng dụng hỗ trợ khách hàng và công việc, bấm vào thẻ để mở.</p>
+            <div className="luoi-app">
+              {ungDung.map((app) => (
+                <TheUngDung key={app.link} app={app} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="phan phan-xam" id="lien-he">
+          <div className="khung lien-he">
+            <div>
+              <p className="phan-nho">Liên hệ</p>
+              <h2>Cần hỗ trợ dịch vụ Agribank?</h2>
+              <p className="phan-mo-ta">
+                Đến trực tiếp trụ sở hoặc phòng giao dịch Agribank gần nhất tại Tây Ninh, hoặc tra cứu thông tin chính thức tại website Agribank.
+              </p>
+            </div>
+            <a className="nut nut-do" href="https://www.agribank.com.vn" target="_blank" rel="noopener">
+              www.agribank.com.vn
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer className="chan-trang">
+        <div className="khung chan-trang-trong">
+          <img src="/brand/agribank_logo_tren_nen_do.svg" alt="Agribank" className="logo-trang" />
+          <p>
+            Trang cá nhân của {caNhan.ten} – {caNhan.chucDanh}.<br />
+            Thông tin chính thức về sản phẩm, lãi suất và biểu phí xem tại www.agribank.com.vn.
+          </p>
+        </div>
+      </footer>
+    </>
   )
 }
