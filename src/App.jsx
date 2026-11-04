@@ -28,6 +28,7 @@ export default function App() {
           </a>
           <nav className="menu">
             <a href="#gioi-thieu">Giới thiệu</a>
+            <a href="#mang-luoi">Mạng lưới</a>
             <a href="#ung-dung">Ứng dụng</a>
             <a href="#lien-he">Liên hệ</a>
           </nav>
@@ -57,7 +58,31 @@ export default function App() {
           <div className="duong-luon" aria-hidden="true" />
         </section>
 
-        <section className="phan" id="ung-dung">
+        <section className="phan" id="mang-luoi">
+          <div className="khung">
+            <p className="phan-nho">Mạng lưới</p>
+            <h2>Mạng lưới Agribank Tây Ninh</h2>
+            <p className="phan-mo-ta">Hội sở, các chi nhánh và phòng giao dịch phục vụ khách hàng trên địa bàn tỉnh Tây Ninh.</p>
+            <div className="video-khung">
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster="/images/mang-luoi-poster.jpg"
+                src="/videos/mang-luoi-agribank-tay-ninh.mp4"
+              >
+                Trình duyệt của bạn không phát được video.
+              </video>
+            </div>
+            <ul className="so-lieu">
+              <li><strong>1</strong> hội sở</li>
+              <li><strong>10</strong> chi nhánh loại II</li>
+              <li><strong>10</strong> phòng giao dịch</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="phan phan-xam" id="ung-dung">
           <div className="khung">
             <p className="phan-nho">Ứng dụng</p>
             <h2>Công cụ & ứng dụng</h2>
@@ -70,7 +95,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="phan phan-xam" id="lien-he">
+        <section className="phan" id="lien-he">
           <div className="khung lien-he">
             <div>
               <p className="phan-nho">Liên hệ</p>
